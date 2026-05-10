@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Star, Users, BookOpen, X, GraduationCap } from 'lucide-react'
 import { Card, CardContent, Button, Badge } from '../components/ui'
 import { instructors, courses } from '../data/mockData'
+import { Link } from 'react-router-dom'
 
 export default function Instructors() {
   const [selected, setSelected] = useState(null)
@@ -103,13 +104,15 @@ export default function Instructors() {
                   <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Courses</p>
                   <div className="space-y-2">
                     {courses.filter(c => c.instructorId === selected.id).map(c => (
-                      <div key={c.id} className="flex items-center gap-2.5 p-2.5 border border-gray-100 rounded-lg">
-                        <img src={c.thumbnail} alt={c.title} className="w-9 h-7 object-cover rounded" />
-                        <div className="flex-1 min-w-0">
-                          <p className="text-xs font-medium text-black line-clamp-1">{c.title}</p>
-                          <p className="text-xs text-gray-400">{c.enrolled.toLocaleString()} students</p>
+                      <Link key={c.id} to={`/app/courses/${c.id}`} onClick={() => setSelected(null)}>
+                        <div className="flex items-center gap-2.5 p-2.5 border border-gray-100 rounded-lg hover:border-gray-300 transition-colors">
+                          <img src={c.thumbnail} alt={c.title} className="w-9 h-7 object-cover rounded" />
+                          <div className="flex-1 min-w-0">
+                            <p className="text-xs font-medium text-black line-clamp-1">{c.title}</p>
+                            <p className="text-xs text-gray-400">{c.enrolled.toLocaleString()} students</p>
+                          </div>
                         </div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </div>

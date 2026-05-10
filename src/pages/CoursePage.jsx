@@ -16,7 +16,7 @@ export default function CoursePage() {
   if (!course) return (
     <div className="text-center py-20">
       <p className="text-gray-400 text-sm">Course not found.</p>
-      <Link to="/courses"><Button className="mt-4">Back to Courses</Button></Link>
+      <Link to="/app/courses"><Button className="mt-4">Back to Courses</Button></Link>
     </div>
   )
 
@@ -24,7 +24,7 @@ export default function CoursePage() {
 
   return (
     <div className="space-y-5">
-      <Link to="/courses" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-black font-medium">
+      <Link to="/app/courses" className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-black font-medium">
         <ChevronLeft className="w-4 h-4" />Back to Courses
       </Link>
 
@@ -57,14 +57,14 @@ export default function CoursePage() {
                   <p className="text-xs text-gray-400">{completedCount}/{course.lessons.length} lessons</p>
                 </div>
               )}
-              <Link to={`/courses/${course.id}/video/1`}>
+              <Link to={`/app/courses/${course.id}/video/1`}>
                 <Button className="w-full gap-1.5 text-sm">
                   <Play className="w-3.5 h-3.5" />
                   {course.progress > 0 ? 'Continue' : 'Start Learning'}
                 </Button>
               </Link>
               {course.completed && (
-                <Link to={`/certificate/${course.id}`}>
+                <Link to={`/app/certificate/${course.id}`}>
                   <Button variant="outline" className="w-full gap-1.5 text-sm">
                     <Award className="w-3.5 h-3.5" />View Certificate
                   </Button>
@@ -134,7 +134,7 @@ export default function CoursePage() {
                     <div><span className="font-bold text-black block">{instructor.courses}</span><span className="text-gray-400">Courses</span></div>
                   </div>
                   <p className="text-xs text-gray-500 mt-3 text-left leading-relaxed">{instructor.bio.slice(0, 120)}...</p>
-                  <Link to="/instructors">
+                  <Link to="/app/instructors">
                     <Button variant="outline" size="sm" className="w-full mt-3">View Profile</Button>
                   </Link>
                 </div>
@@ -157,7 +157,7 @@ export default function CoursePage() {
                     <p className="text-sm font-medium text-black">Lesson {idx + 1}: {lesson.title}</p>
                     <p className="text-xs text-gray-400 mt-0.5 flex items-center gap-1"><Clock className="w-3 h-3" />{lesson.duration}</p>
                   </div>
-                  <Link to={`/courses/${course.id}/video/${lesson.id}`}>
+                  <Link to={`/app/courses/${course.id}/video/${lesson.id}`}>
                     <Button size="sm" variant={lesson.completed ? 'ghost' : 'outline'} className="gap-1">
                       <Play className="w-3 h-3" />{lesson.completed ? 'Replay' : 'Watch'}
                     </Button>
@@ -181,7 +181,7 @@ export default function CoursePage() {
                   <h3 className="font-medium text-sm text-black">{quiz.title}</h3>
                   <p className="text-xs text-gray-400 mt-0.5">{quiz.questions.length} questions</p>
                 </div>
-                <Link to={`/quiz/${quiz.id}`}><Button size="sm">Start Quiz</Button></Link>
+                <Link to={`/app/quiz/${quiz.id}`}><Button size="sm">Start Quiz</Button></Link>
               </CardContent>
             </Card>
           )) : (
@@ -198,7 +198,7 @@ export default function CoursePage() {
         <Card>
           <CardContent className="p-5 text-center">
             <p className="text-gray-500 text-sm">Browse all downloadable resources.</p>
-            <Link to="/resources"><Button className="mt-3">Go to Resources</Button></Link>
+            <Link to="/app/resources"><Button className="mt-3">Go to Resources</Button></Link>
           </CardContent>
         </Card>
       )}

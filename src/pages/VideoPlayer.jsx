@@ -15,7 +15,7 @@ export default function VideoPlayer() {
   if (!course || !lesson) return (
     <div className="text-center py-20">
       <p className="text-gray-400 text-sm">Lesson not found.</p>
-      <Link to="/courses"><Button className="mt-4">Back to Courses</Button></Link>
+      <Link to="/app/courses"><Button className="mt-4">Back to Courses</Button></Link>
     </div>
   )
 
@@ -24,7 +24,7 @@ export default function VideoPlayer() {
 
   return (
     <div className="space-y-4">
-      <Link to={`/courses/${id}`} className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-black font-medium">
+      <Link to={`/app/courses/${id}`} className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-black font-medium">
         <ChevronLeft className="w-4 h-4" />Back to {course.title}
       </Link>
 
@@ -54,7 +54,7 @@ export default function VideoPlayer() {
               )}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                 <div
-                  className="h-1 bg-white/30 rounded-full mb-3 cursor-pointer group"
+                  className="h-1 bg-white/30 rounded-full mb-3 cursor-pointer"
                   onClick={e => {
                     const rect = e.currentTarget.getBoundingClientRect()
                     setProgress(Math.round(((e.clientX - rect.left) / rect.width) * 100))
@@ -69,12 +69,12 @@ export default function VideoPlayer() {
                     {playing ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                   </button>
                   {prevLesson && (
-                    <Link to={`/courses/${id}/video/${prevLesson.id}`}>
+                    <Link to={`/app/courses/${id}/video/${prevLesson.id}`}>
                       <SkipBack className="w-4 h-4 text-white hover:text-gray-300" />
                     </Link>
                   )}
                   {nextLesson && (
-                    <Link to={`/courses/${id}/video/${nextLesson.id}`}>
+                    <Link to={`/app/courses/${id}/video/${nextLesson.id}`}>
                       <SkipForward className="w-4 h-4 text-white hover:text-gray-300" />
                     </Link>
                   )}
@@ -102,12 +102,12 @@ export default function VideoPlayer() {
                 </div>
                 <div className="flex gap-2">
                   {prevLesson && (
-                    <Link to={`/courses/${id}/video/${prevLesson.id}`}>
+                    <Link to={`/app/courses/${id}/video/${prevLesson.id}`}>
                       <Button variant="outline" size="sm" className="gap-1"><SkipBack className="w-3 h-3" />Prev</Button>
                     </Link>
                   )}
                   {nextLesson && (
-                    <Link to={`/courses/${id}/video/${nextLesson.id}`}>
+                    <Link to={`/app/courses/${id}/video/${nextLesson.id}`}>
                       <Button size="sm" className="gap-1">Next<SkipForward className="w-3 h-3" /></Button>
                     </Link>
                   )}
@@ -124,7 +124,7 @@ export default function VideoPlayer() {
               {course.lessons.map((l, idx) => (
                 <Link
                   key={l.id}
-                  to={`/courses/${id}/video/${l.id}`}
+                  to={`/app/courses/${id}/video/${l.id}`}
                   className={`flex items-center gap-2.5 p-2.5 rounded-lg transition-colors ${l.id === Number(lessonId) ? 'bg-black' : 'hover:bg-gray-50'}`}
                 >
                   <div className="flex-shrink-0">

@@ -6,17 +6,17 @@ import {
 import { cn } from '../lib/utils'
 
 const navItems = [
-  { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
-  { to: '/courses', icon: BookOpen, label: 'Courses' },
-  { to: '/progress', icon: BarChart2, label: 'Progress' },
-  { to: '/forum', icon: MessageSquare, label: 'Discussion' },
-  { to: '/resources', icon: Download, label: 'Resources' },
-  { to: '/instructors', icon: Users, label: 'Instructors' },
+  { to: '/app', icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/app/courses', icon: BookOpen, label: 'Courses' },
+  { to: '/app/progress', icon: BarChart2, label: 'Progress' },
+  { to: '/app/forum', icon: MessageSquare, label: 'Discussion' },
+  { to: '/app/resources', icon: Download, label: 'Resources' },
+  { to: '/app/instructors', icon: Users, label: 'Instructors' },
 ]
 
 const bottomItems = [
-  { to: '/settings', icon: Settings, label: 'Settings' },
-  { to: '/help', icon: HelpCircle, label: 'Help Center' },
+  { to: '/app/settings', icon: Settings, label: 'Settings' },
+  { to: '/app/help', icon: HelpCircle, label: 'Help Center' },
 ]
 
 export default function Sidebar({ isOpen, onClose }) {
@@ -44,7 +44,7 @@ export default function Sidebar({ isOpen, onClose }) {
             <NavLink
               key={to}
               to={to}
-              end={to === '/'}
+              end={to === '/app'}
               onClick={onClose}
               className={({ isActive }) =>
                 cn(

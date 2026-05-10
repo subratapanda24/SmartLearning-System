@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Download, FileText, FileSpreadsheet, Archive, Search } from 'lucide-react'
 import { Card, CardContent, Badge, Button, Input } from '../components/ui'
 import { resources } from '../data/mockData'
+import { Link } from 'react-router-dom'
 
 const typeIcon = { PDF: FileText, XLSX: FileSpreadsheet, ZIP: Archive }
 const typeColor = { PDF: 'text-red-500', XLSX: 'text-green-600', ZIP: 'text-yellow-600' }
@@ -69,12 +70,22 @@ export default function Resources() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="text-sm font-semibold text-black">{resource.title}</h3>
-                    <p className="text-xs text-gray-400 mt-0.5">{resource.course} — {resource.date}</p>
+                    <p className="text-xs text-gray-400 mt-0.5">
+                      <Link to={`/app/courses/${resource.courseId}`} className="hover:underline">
+                        {resource.course}
+                      </Link>
+                      {' '}— {resource.date}
+                    </p>
                   </div>
                   <div className="flex items-center gap-2.5 flex-shrink-0">
                     <Badge variant="outline">{resource.type}</Badge>
                     <span className="text-xs text-gray-400 hidden sm:block">{resource.size}</span>
-                    <Button size="sm" variant="outline" className="gap-1" onClick={() => alert(`Downloading: ${resource.title}`)}>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="gap-1"
+                      onClick={() => alert(`Downloading: ${resource.title}`)}
+                    >
                       <Download className="w-3 h-3" />Download
                     </Button>
                   </div>

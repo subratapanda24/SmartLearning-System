@@ -52,7 +52,7 @@ export default function Dashboard() {
           <div>
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-sm font-semibold text-black">Ongoing Courses</h2>
-              <Link to="/courses" className="text-xs text-gray-500 hover:text-black font-medium flex items-center gap-0.5">
+              <Link to="/app/courses" className="text-xs text-gray-500 hover:text-black font-medium flex items-center gap-0.5">
                 View all <ChevronRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -75,7 +75,7 @@ export default function Dashboard() {
                         <Clock className="w-3 h-3" />Due in {course.dueIn}
                       </p>
                     )}
-                    <Link to={`/courses/${course.id}`}>
+                    <Link to={`/app/courses/${course.id}`}>
                       <Button variant="outline" size="sm" className="w-full mt-3 gap-1.5 text-xs">
                         <Play className="w-3 h-3" />Continue
                       </Button>
@@ -89,7 +89,7 @@ export default function Dashboard() {
           <div>
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-sm font-semibold text-black">Recommended for You</h2>
-              <Link to="/courses" className="text-xs text-gray-500 hover:text-black font-medium flex items-center gap-0.5">
+              <Link to="/app/courses" className="text-xs text-gray-500 hover:text-black font-medium flex items-center gap-0.5">
                 Explore <ChevronRight className="w-3.5 h-3.5" />
               </Link>
             </div>
@@ -112,7 +112,7 @@ export default function Dashboard() {
                             <Star className="w-3 h-3 fill-black text-black" />{course.rating}
                           </span>
                           <span className="text-xs text-gray-400">{course.duration}</span>
-                          <Link to={`/courses/${course.id}`} className="ml-auto">
+                          <Link to={`/app/courses/${course.id}`} className="ml-auto">
                             <Button size="sm" className="text-xs h-6 px-2.5">Enroll</Button>
                           </Link>
                         </div>
@@ -152,10 +152,10 @@ export default function Dashboard() {
               <h2 className="text-sm font-semibold text-black mb-3">Quick Access</h2>
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  { to: '/quiz/1', label: 'Take Quiz' },
-                  { to: '/resources', label: 'Resources' },
-                  { to: '/certificate/4', label: 'Certificate' },
-                  { to: '/forum', label: 'Forum' },
+                  { to: '/app/quiz/1', label: 'Take Quiz' },
+                  { to: '/app/resources', label: 'Resources' },
+                  { to: '/app/certificate/4', label: 'Certificate' },
+                  { to: '/app/forum', label: 'Forum' },
                 ].map(({ to, label }) => (
                   <Link key={to} to={to}>
                     <Button variant="outline" size="sm" className="w-full text-xs">{label}</Button>
