@@ -57,7 +57,7 @@ export default function Certificates() {
         {inProgressCourses.map((course, i) => (
           <div key={course.id} className="card animate-in" style={{ animationDelay: `${i * 0.08}s` }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-              <span style={{ fontSize: 32 }}>{course.thumbnail}</span>
+              <img src={course.thumbnail} alt={course.title} style={{ width: 48, height: 36, objectFit: 'cover', borderRadius: 'var(--radius-md)' }} />
               <div>
                 <h3 style={{ fontSize: 15 }}>{course.title}</h3>
                 <span style={{ fontSize: 12, color: 'var(--text-tertiary)' }}>{course.instructor}</span>

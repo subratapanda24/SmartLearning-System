@@ -163,7 +163,7 @@ export default function LandingPage() {
             maxWidth: 500
           }}
         >
-          Your AI-powered study buddy, smart flashcards, and concept maps—all in one minimalist space.
+          Transform your study material into interactive learning experiences.
         </motion.p>
 
         <motion.div

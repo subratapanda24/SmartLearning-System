@@ -107,7 +107,7 @@ export default function ProgressDashboard() {
             <div key={course.id} className="animate-in" style={{ animationDelay: `${i * 0.05}s` }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
                 <span style={{ fontSize: 14, fontWeight: 500, display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <span>{course.thumbnail}</span> {course.title}
+                  <img src={course.thumbnail} alt={course.title} style={{ width: 32, height: 24, objectFit: 'cover', borderRadius: 'var(--radius-sm)' }} /> {course.title}
                 </span>
                 <span style={{ fontSize: 13, color: 'var(--text-tertiary)' }}>{course.progress}%</span>
               </div>

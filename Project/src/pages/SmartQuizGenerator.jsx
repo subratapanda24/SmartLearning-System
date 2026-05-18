@@ -41,15 +41,15 @@ export default function SmartQuizGenerator() {
 
     if (sentences.length === 0) return [];
 
-    // Extract key terms (capitalized words, technical terms, multi-word phrases)
+  
     const allWords = text.split(/\s+/).filter(w => w.length > 3);
     const keyTerms = [...new Set(
       allWords.filter(w => /^[A-Z]/.test(w) || w.length > 6)
     )].slice(0, 20);
 
-    // Build question generators
+
     const generators = [
-      // Type 1: "What is X?" — tests definition recall
+
       (sentence) => {
         const match = sentence.match(/^(.+?)\s+(?:is|are|was|were)\s+(.+)$/i);
         if (!match) return null;
@@ -93,7 +93,7 @@ export default function SmartQuizGenerator() {
           subject: match[1].trim(),
         };
       },
-      // Type 5: Direct comprehension — "According to the notes..."
+ 
       (sentence) => {
         const words = sentence.split(/\s+/);
         if (words.length < 6) return null;
@@ -106,7 +106,7 @@ export default function SmartQuizGenerator() {
       },
     ];
 
-    // Generate plausible distractors from the text itself
+ 
     const makeDistractors = (correctAnswer, subject) => {
       const otherSentences = sentences
         .filter(s => s !== correctAnswer && !s.includes(subject))
@@ -194,7 +194,7 @@ export default function SmartQuizGenerator() {
       }
       throw new Error('Empty response');
     } catch {
-      // Fallback: generate locally from notes
+
       clearInterval(interval);
       setProgress(100);
       const localQs = notes.trim() ? generateFromText(notes, numQuestions) : [];
@@ -232,7 +232,7 @@ export default function SmartQuizGenerator() {
   const score = answers.filter((a) => a.correct).length;
   const pct = questions.length > 0 ? Math.round((score / questions.length) * 100) : 0;
 
-  // ─── Input Stage ──────────────────────────────────────────────
+ 
   if (stage === 'input') {
     return (
       <PageTransition>

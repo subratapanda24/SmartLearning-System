@@ -46,8 +46,10 @@ export default function Resources() {
             key={c.id}
             className={`filter-tab ${filterCourse === String(c.id) ? 'active' : ''}`}
             onClick={() => setFilterCourse(String(c.id))}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
           >
-            {c.thumbnail} {c.title.split(' ').slice(0, 2).join(' ')}
+            <img src={c.thumbnail} alt={c.title} style={{ width: 24, height: 18, objectFit: 'cover', borderRadius: '4px' }} />
+            {c.title.split(' ').slice(0, 2).join(' ')}
           </button>
         ))}
       </div>
