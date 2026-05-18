@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import {
   HiOutlineAcademicCap, HiOutlineBookOpen, HiOutlineChartBar,
@@ -30,10 +30,10 @@ export default function Sidebar() {
 
   return (
     <aside className={`sidebar ${collapsed ? 'collapsed' : ''}`}>
-      <div className="sidebar-logo">
+      <Link to="/" className="sidebar-logo" style={{ textDecoration: 'none' }}>
         <div className="logo-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m2 10 10-5 10 5-10 5-10-5z"/><path d="M6 12v5c0 1 4 3 6 3s6-2 6-3v-5"/></svg></div>
         <span className="logo-text">SmartLearn</span>
-      </div>
+      </Link>
 
       <nav className="sidebar-nav">
         {navItems.map((item, i) => {
