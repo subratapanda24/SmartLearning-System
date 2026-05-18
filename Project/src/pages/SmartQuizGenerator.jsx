@@ -32,7 +32,7 @@ export default function SmartQuizGenerator() {
     reader.readAsDataURL(file);
   };
 
-  // Smart local quiz generation — extracts facts and creates targeted questions
+
   const generateFromText = (text, count) => {
     const sentences = text
       .split(/[.!?\n]+/)
@@ -71,7 +71,7 @@ export default function SmartQuizGenerator() {
           subject: sentence.split(/\s+/).slice(0, 3).join(' '),
         };
       },
-      // Type 3: "What does X do/enable/handle?" — tests functional knowledge
+
       (sentence) => {
         const match = sentence.match(/(.+?)\s+(?:allows?|enables?|handles?|provides?|supports?|creates?|uses?)\s+(.+)/i);
         if (!match) return null;
@@ -83,7 +83,7 @@ export default function SmartQuizGenerator() {
           subject,
         };
       },
-      // Type 4: "X is used for ___" — fill-in-the-blank style
+
       (sentence) => {
         const match = sentence.match(/(.+?)\s+(?:is used for|is used to|is designed to|helps to|is responsible for)\s+(.+)/i);
         if (!match) return null;
@@ -370,7 +370,7 @@ export default function SmartQuizGenerator() {
     );
   }
 
-  // ─── Generating Stage ─────────────────────────────────────────
+
   if (stage === 'generating') {
     return (
       <PageTransition>
@@ -402,7 +402,7 @@ export default function SmartQuizGenerator() {
     );
   }
 
-  // ─── Quiz Stage ───────────────────────────────────────────────
+
   if (stage === 'quiz' && questions.length > 0) {
     const q = questions[current];
     const isLastQuestion = current === questions.length - 1;
@@ -486,7 +486,7 @@ export default function SmartQuizGenerator() {
     );
   }
 
-  // ─── Result Stage ─────────────────────────────────────────────
+
   if (stage === 'result') {
     const borderColor = pct >= 80 ? 'var(--success)' : pct >= 60 ? 'var(--warning)' : 'var(--error)';
     const ResultIcon = pct >= 80 ? HiOutlineTrophy : pct >= 60 ? HiOutlineHandThumbUp : HiOutlineAcademicCap;
@@ -508,7 +508,7 @@ export default function SmartQuizGenerator() {
               {score} out of {questions.length} correct
             </p>
 
-            {/* Answer Review */}
+
             <div style={{
               textAlign: 'left', marginBottom: 24,
               background: 'var(--bg-elevated)', borderRadius: 'var(--radius-md)',
@@ -545,7 +545,6 @@ export default function SmartQuizGenerator() {
               })}
             </div>
 
-            {/* Actions */}
             <div style={{ display: 'flex', gap: 12, justifyContent: 'center' }}>
               <button
                 className="btn btn-secondary"

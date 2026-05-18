@@ -26,7 +26,7 @@ const CATEGORIES = [
 
 export default function MindMap() {
   const [selectedCourse, setSelectedCourse] = useState(null);
-  const [viewMode, setViewMode] = useState('map'); // 'map' or 'categories'
+  const [viewMode, setViewMode] = useState('map'); 
   const [expanded, setExpanded] = useState(new Set());
   const [selectedCat, setSelectedCat] = useState(null);
   const [aiInsight, setAiInsight] = useState('');
@@ -34,7 +34,7 @@ export default function MindMap() {
 
   const availableCourses = courses.filter(c => mindmapData[c.id]);
 
-  // Categorize courses
+
   const categorized = {};
   courses.forEach((c) => {
     if (!categorized[c.category]) categorized[c.category] = [];
@@ -56,7 +56,7 @@ export default function MindMap() {
     const avg = Math.round(list.reduce((s, c) => s + c.progress, 0) / (list.length || 1));
     setLoadingInsight(true);
 
-    // Local fallback insights by category
+
     const localInsights = {
       'Web Development': `Focus on building real projects to solidify your ${avg > 50 ? 'advanced' : 'foundational'} skills. Practice component architecture, state management patterns, and responsive design. ${avg < 30 ? 'Start with the basics and build incrementally.' : 'Consider contributing to open-source projects to gain practical experience.'}`,
       'Data Science': `Strengthen your understanding of data pipelines and statistical analysis. ${avg > 50 ? 'Dive into advanced topics like feature engineering and model evaluation.' : 'Focus on mastering Pandas fundamentals and basic visualization.'} Work with real-world datasets to build practical intuition.`,
@@ -86,7 +86,7 @@ export default function MindMap() {
     setLoadingInsight(false);
   };
 
-  // ─── Mind Map View ────────────────────────────────────────────
+
   if (selectedCourse) {
     return (
       <PageTransition>
@@ -95,7 +95,7 @@ export default function MindMap() {
     );
   }
 
-  // ─── Course Selection / Category View ─────────────────────────
+
   return (
     <PageTransition>
       <div className="page-header">
@@ -125,7 +125,7 @@ export default function MindMap() {
       </div>
 
       {viewMode === 'map' ? (
-        /* ── Concept Map Selection ── */
+
         <div className="grid-3">
           {availableCourses.map((course, i) => (
             <div
@@ -148,9 +148,8 @@ export default function MindMap() {
           ))}
         </div>
       ) : (
-        /* ── Categories View ── */
+
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 20 }}>
-          {/* Main Content */}
           <div className="card" style={{ padding: 24 }}>
             <h3 style={{ fontSize: 16, fontWeight: 600, marginBottom: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
               <HiOutlineBookOpen style={{ fontSize: 18 }} /> Course Categories
@@ -164,7 +163,6 @@ export default function MindMap() {
 
                 return (
                   <div key={cat.id}>
-                    {/* Category Button */}
                     <button
                       onClick={() => toggle(cat.id)}
                       style={{
@@ -199,7 +197,7 @@ export default function MindMap() {
                       </span>
                     </button>
 
-                    {/* Courses List */}
+
                     {isExp && (
                       <div style={{
                         display: 'flex', flexDirection: 'column', gap: 6,
@@ -244,9 +242,8 @@ export default function MindMap() {
             </div>
           </div>
 
-          {/* Sidebar */}
+     
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {/* AI Insight */}
             {selectedCat && (
               <div className="card-accent" style={{ padding: 20 }}>
                 <p style={{
@@ -273,7 +270,7 @@ export default function MindMap() {
               </div>
             )}
 
-            {/* Overall Stats */}
+
             <div className="card" style={{ padding: 20 }}>
               <p style={{
                 fontSize: 11, fontWeight: 600, color: 'var(--text-tertiary)',
@@ -318,7 +315,7 @@ function MindMapView({ courseId, onBack }) {
   const [edges, setEdges, onEdgesChange] = useEdgesState(mapData?.edges || []);
 
   const onNodeClick = useCallback((e, node) => {
-    // Highlight on click
+
   }, []);
 
   if (!mapData) return null;

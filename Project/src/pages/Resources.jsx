@@ -58,7 +58,7 @@ export default function Resources() {
         {filtered.map((resource, i) => {
           const typeStyle = getTypeColor(resource.type);
           
-          // Map mock IDs to our actual generated PDFs
+
           let downloadUrl = '#';
           if (resource.title.includes('React Official')) downloadUrl = '/react_official.pdf';
           else if (resource.title.includes('Component Cheat Sheet')) downloadUrl = '/component_cheatsheet.pdf';
